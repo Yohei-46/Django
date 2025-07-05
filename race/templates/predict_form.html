@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>予測フォーム</title>
+</head>
+<body>
+    <h1>レース予測</h1>
+
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        <label>予測したいレースID:</label>
+        <input type="text" name="predict_race_id" value="{{ predict_race_id }}">
+        <button type="submit">予測実行</button>
+    </form>
+
+    {% if trifecta_predictions %}
+        <h2>3連単予測結果</h2>
+        <table border="1">
+            <tr><th>組み合わせ</th><th>確率</th></tr>
+            {% for pred in trifecta_predictions %}
+            <tr>
+                <td>{{ pred.combination }}</td>
+                <td>{{ pred.probability }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+
+    {% if win_predictions %}
+        <h2>単勝予測結果</h2>
+        <table border="1">
+            <tr><th>馬番</th><th>馬名</th><th>勝率予測</th></tr>
+            {% for num, name, prob in win_predictions %}
+            <tr>
+                <td>{{ num }}</td><td>{{ name }}</td><td>{{ prob }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+
+</body>
+</html>
