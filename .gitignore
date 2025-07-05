@@ -1,6 +1,54 @@
-venv/
+# Python
 __pycache__/
-*.pyc
-*.pkl
-db.sqlite3
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+*.log
+
+# Django
+*.sqlite3
+*.db
+*.db-journal
+.env
+.env.*
+
+# VSCode
+.vscode/
+
+# Mac / Windows
 .DS_Store
+Thumbs.db
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# mypy
+.mypy_cache/
+
+# pycache from deeper folders
+**/__pycache__/
+
+# PyInstaller
+*.spec
+
+# coverage
+htmlcov/
+.coverage
+.cache
+
+# test reports
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+
+# pipenv
+Pipfile.lock
+
+# venv
+venv/
+ENV/
+env/
