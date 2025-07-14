@@ -30,6 +30,7 @@ IDは12桁で構成。
 
 print("[LOG] batch_scraper.py がインポートされました")
 
+import time
 def run_batch_scraping(race_ids):
     for race_id in race_ids:
         if RaceResult.objects.filter(race_id=race_id).exists():
@@ -43,6 +44,9 @@ def run_batch_scraping(race_ids):
                 print(f"[❌] {race_id} テーブル見つからず")
         except Exception as e:
             print(f"[ERROR] {race_id} の処理中に例外: {e}")
+
+        print("[WAIT] 5秒待機中...")
+        time.sleep(5)
 
 def generate_race_ids(start_date: str, end_date: str, place_name: str):
     """
